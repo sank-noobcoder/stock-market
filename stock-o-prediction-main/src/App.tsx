@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +13,7 @@ import Prediction from "./pages/Prediction";
 import Learning from "./pages/Learning";
 import NotFound from "./pages/NotFound";
 import About from "./pages/About";
+import Documentation from "./pages/Documentation"; // New page
 import ChatbotFloatingButton from "./components/ChatbotFloatingButton";
 import ProtectedRoute from "./components/ProtectedRoute";
 import FreeTrialTimer from "./components/FreeTrialTimer";
@@ -33,6 +33,7 @@ const queryClient = new QueryClient({
     queries: {
       refetchOnWindowFocus: false,
       retry: 0,
+      staleTime: 60000, // 1 minute, improve performance
     },
   },
 });
@@ -48,6 +49,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/documentation" element={<Documentation />} />
             
             {/* Protected routes */}
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
